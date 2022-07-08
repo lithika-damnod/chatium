@@ -1,0 +1,17 @@
+.submit-btn{
+    display: flex; 
+    background-color: #795ae098; 
+    width: 160px; 
+    height: 50px; 
+    border-radius: 8px; 
+    justify-content: center;
+    align-items: center;
+    color: white; 
+    font-family: "Fira Code"; 
+    cursor: pointer; 
+    margin: 15px; 
+    margin-right: 2rem; 
+}
+.submit-btn:hover{
+    background-color: #795ae0ce; 
+}
