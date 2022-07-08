@@ -28,6 +28,6 @@
 /* media query for changing input width */ 
 @media only screen and (max-width: 800px){
     .usr-inp{
-        width: 312px; 
+        width: 312px !important; 
     }
 }

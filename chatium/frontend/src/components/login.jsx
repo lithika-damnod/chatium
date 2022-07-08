@@ -17,8 +17,10 @@ class Login extends Component{
                     <img src="static/chatium-logo.png" alt="chatium-log" id="logo" />   
                 </div>
                 <div className="register-form">
-                    <TextInputField label="First Name" size="312px" />
-                    <TextInputField label="Last Name" size="312px" classText="last-name" />
+                    <div className="col-1">
+                        <TextInputField label="First Name" size="312px" />
+                        <TextInputField label="Last Name" size="312px" classText="last-name" />
+                    </div>
                     <TextInputField label="Email" size="520px" classText="email-field" />
                     <PasswordInputField label="Password" size="312px" classText="password-field" />
                     <PasswordInputField label="Confirm Password" size="312px" classText="password-con-field" />

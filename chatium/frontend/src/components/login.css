@@ -19,26 +19,20 @@ body{
 }
 
 .register-form{
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
+    display: flex;  
+    flex-direction: column; 
     justify-content: center;
 }
-.email-field{
-    grid-column: 1/-1; 
+.col-1{
+    display: flex; 
 }
-.password-field{
-    grid-column: 1/-1; 
-}
-.password-con-field{
-    grid-column: 1/-1; 
-}
+
 .option-1{
     font-size: 1em; 
     margin-left: 1.5em; 
     cursor: pointer; 
 }
 .sign-area{
-    grid-column: 1/-1; 
     display: flex;
     justify-content: space-between;
     align-items: center; 
@@ -48,8 +42,11 @@ body{
 @media only screen and (max-width: 800px){
     .login-frame{
         width: 100%; 
+        height: 100%; 
         margin: 0px; 
-        padding: 30px; 
+    }
+    .col-1{
+        flex-direction: column; 
     }
     #logo{
         width: 280px; 
@@ -59,9 +56,10 @@ body{
         display: flex; 
         justify-content: center; 
         flex-direction: column; 
+        align-items: center;
     }
-    .last-name{
-        grid-column: 1/-1; 
-    } 
+    .sign-area{
+        margin-top: 20px; 
+    }
 }
 
