@@ -10,7 +10,7 @@ class LoginButton extends Component{
     render(){
         return (
             <div className="submit-btn">
-                Sign Up 
+                Login 
             </div>
         );
     }

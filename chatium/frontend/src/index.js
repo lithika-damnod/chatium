@@ -1,8 +1,11 @@
 import React from 'react'; 
 import ReactDOM from 'react-dom'; 
-import Login from './components/login'; 
 
+// components
+import SignIn from './components/signIn'; 
+import Register from './components/register'; 
+import SidePanel from './components/sidePanel'; 
 // CSS 
 import './index.css';  // main css 
 
-ReactDOM.render(<Login />, document.getElementById("login-view")); 
+ReactDOM.render(<SidePanel />, document.getElementById("root")); 

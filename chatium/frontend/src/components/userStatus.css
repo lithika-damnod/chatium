@@ -1,0 +1,38 @@
+.status-container{
+    display: flex; 
+    align-items: center;
+    cursor: pointer; 
+    margin-bottom: 8px; 
+}
+.pic-container{
+    display: block; 
+    width: 65px; 
+    height: 65px; 
+    background-color: #4646646d; 
+    border-radius: 50%; 
+    cursor: pointer; 
+    margin: 10px; 
+}
+.usr-name{
+    display: block; 
+    width: 280px; 
+    height: 25px; 
+    background-color: #4646646d;
+    border-radius: 10px; 
+    margin-bottom: 10px; 
+}
+.usr-desc{
+    display: block; 
+    width: 200px; 
+    height: 20px; 
+    background-color: #4646646d;
+    border-radius: 10px; 
+}
+.conn-status{
+    display: block; 
+    width: 10px; 
+    height: 10px; 
+    background-color: rgba(255, 0, 0, 0.492); 
+    border-radius: 50%; 
+    margin-left: 15px; 
+}
