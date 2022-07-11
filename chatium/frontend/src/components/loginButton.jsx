@@ -1,19 +1,14 @@
-import React, {Component} from 'react'; 
+import React from 'react'; 
 
 // components
 
 // css
 import "./loginButton.css"; 
 
-class LoginButton extends Component{
-    state = {};
-    render(){
-        return (
-            <div className="submit-btn">
-                Login 
-            </div>
-        );
-    }
+export default function LoginButton(props){
+    return (
+        <div className="submit-btn" onClick={props.onClick}>
+            Login 
+        </div>
+    );
 }
-
-export default LoginButton;  

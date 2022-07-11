@@ -1,0 +1,9 @@
+.chat-frame{
+    display: block; 
+    background-color: #1E234A; 
+    height: 100vh; 
+    margin: 20px; 
+    border-radius: 20px; 
+    padding: 20px; 
+    cursor: pointer; 
+}
