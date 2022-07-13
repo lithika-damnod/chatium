@@ -71,7 +71,6 @@ def user_actions(request):
         print(n_id)
         # set the session id 
         request.session["id"] = n_id
-
         return JsonResponse({
             "status" : "session initiated", 
             "id" : n_id
