@@ -11,3 +11,11 @@ class User(models.Model):
 
     def __str__(self): 
         return f"firstname: {self.firstName}, lastname: {self.lastName}, email: {self.email}, password: {self.password}"
+
+
+class Chat(models.Model): 
+    sender = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    msg = models.TextField(blank=False)
+
+    def __str__(self):
+        return f"sender: {self.sender} msg: {self.msg}"

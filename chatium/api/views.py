@@ -80,3 +80,8 @@ def user_actions(request):
         return JsonResponse({
             "status": "route isn't configured yet"
         })
+    
+
+@api_view(['GET', 'POST'])
+def handleChatMessages(): 
+    pass
