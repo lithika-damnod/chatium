@@ -31,20 +31,21 @@ export default function Register(){
 
     // send data for API endpoint
     const sendData = async () => {
-        let api_url = "http://127.0.0.1:8000/"; 
-        const api = axios.create({
-            baseURL : api_url
-        }); 
+        let api_url = "http://127.0.0.1:8000/api/user/"; 
 
-        // POST request for creating a new user  
-        let res = await api.post('/api/user', {
+        let res = await axios.post(api_url, {
             "firstName" : firstName, 
             "lastName" : lastName, 
             "email" : email, 
             "password" : password
-        })      
-        console.log(res); 
-    }; 
+        }, 
+        {
+            headers : {
+                'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
+            }
+        }); 
+        console.log(res.data); 
+    };  
 
    const [firstName, setFirstName] = useState(""); 
    const [lastName, setLastName] = useState(""); 

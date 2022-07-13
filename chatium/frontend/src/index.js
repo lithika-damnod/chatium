@@ -6,6 +6,7 @@ import SignIn from './components/signIn';
 import Register from './components/register'; 
 import SidePanel from './components/sidePanel'; 
 import ChatView from './components/chatView'; 
+import ChatFriend from './components/chatFriend';
 
 // CSS 
 import './index.css';  // main css 

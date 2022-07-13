@@ -6,7 +6,7 @@ import FriendChat from './friendChat';
 // css
 import "./chatView.css"; 
 
-function ChatView(props){ 
+export default function ChatView(props){ 
     return (
         <div className="container">
             <div className="chat-frame">
@@ -18,6 +18,3 @@ function ChatView(props){
     );
 }
 
-
-
-export default ChatView;  

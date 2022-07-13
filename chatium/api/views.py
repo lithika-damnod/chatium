@@ -1,8 +1,12 @@
+from json import JSONDecodeError
 from django.http import JsonResponse, HttpResponse
 from rest_framework.decorators import api_view
+import json
+from PIL import Image
 
 from .models import * 
 from .serializers import * 
+from .utils import * 
 
 # Create your views here.
 @api_view(['GET'])
@@ -11,7 +15,8 @@ def index(request):
         "status": "success"
     })
 
-@api_view(['GET', 'POST', 'PUT', 'DELETE'])
+# :TODO Recheck the function 
+@api_view(['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'])
 def user_actions(request):
 
     # get current user info 
@@ -43,18 +48,36 @@ def user_actions(request):
                 "email" : value, 
                 "password" : value, 
         """ 
-        firstName = request.POST.get("firstName")
-        lastName = request.POST.get("lastName")
-        email = request.POST.get("email")
-        password = request.POST.get("password")
+        json_data = json.loads(request.body)
+        firstName = json_data["firstName"]
+        lastName = json_data["lastName"]
+        email = json_data["email"]
+        password = json_data["password"]
+        encrypted_password = hashText(password)
         print(f"first: {firstName} last: {lastName} email: {email} password: {password}")
-        n_user = User(email=email, firstName=firstName, lastName=lastName, password=password)
+        n_user = User(email=email, firstName=firstName, lastName=lastName, password=encrypted_password)
+
+        # select a random profile picture and assign it to profilePic field 
+        """
+        randomPic = selectRandomFile("frontend/public/static/default-profile-pictures")
+        pic_path = "frontend/public/static/default-profile-pictures/" + randomPic
+        prof = Image.open(pic_path)
+        print(prof)
+        n_user.profilePic = prof 
+        """
         n_user.save()
         # get the id of newly created user 
-        n_id = User.objects.first(email=email)
+        n_id = User.objects.filter(email=email).first().id
+        print(n_id)
         # set the session id 
         request.session["id"] = n_id
 
         return JsonResponse({
-            "status" : "session initiated"
+            "status" : "session initiated", 
+            "id" : n_id
+        })
+
+    else:
+        return JsonResponse({
+            "status": "route isn't configured yet"
         })
