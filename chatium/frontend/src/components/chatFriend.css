@@ -22,7 +22,8 @@
     width: 280px; 
 }
 .chatHistory{
-    display: block; 
+    display: flex; 
+    flex-direction: column-reverse;
     height: 50vh; 
     overflow-y: scroll; 
 }

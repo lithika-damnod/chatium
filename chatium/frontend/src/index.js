@@ -1,5 +1,6 @@
 import React from 'react'; 
 import ReactDOM from 'react-dom'; 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // components
 import SignIn from './components/signIn'; 
@@ -11,4 +12,17 @@ import ChatFriend from './components/chatFriend';
 // CSS 
 import './index.css';  // main css 
 
-ReactDOM.render(<Register />, document.getElementById("root")); 
+export default function App() {
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" exact element={<ChatView />} />
+                <Route path="/signup" element={<Register />} />
+                <Route path="/signin" element={<SignIn />} />
+                <Route path="/chat" exact element={<ChatFriend />} />
+            </Routes>
+        </BrowserRouter>
+    )
+}
+
+ReactDOM.render(<App />, document.getElementById("root")); 

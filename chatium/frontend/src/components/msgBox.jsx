@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import "./msgBox.css"; 
 
-export default function MsgBox(){
+export default function MsgBox(props){
     const handleMessageTyping = (e) => {
         setMsg(e.target.value); 
     }; 
@@ -10,7 +10,7 @@ export default function MsgBox(){
 
     return (
         <div class="textarea-wrapper">
-            <textarea onChange={handleMessageTyping} > 
+            <textarea onChange={handleMessageTyping} id={props.id}> 
                 { msg }
             </textarea>  
         </div>
