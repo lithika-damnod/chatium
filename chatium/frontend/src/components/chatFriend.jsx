@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react'; 
+import ReactDOM from 'react-dom/client'
+
 import axios from 'axios'; 
 
 // components
@@ -26,7 +28,7 @@ const getUserId = async () => {
 
 let url = "ws://127.0.0.1:8000/ws/chat/"; 
 const chatSocket = new WebSocket(url);
-
+var countEffect=0; 
 
 export default function ChatFriend(props){
 
@@ -43,6 +45,8 @@ export default function ChatFriend(props){
                 
                 // update the view :TODO Not working 
                 handleSettingChats('r');  // updates the state "chats" 
+                countEffect++; 
+                setCount(chatCount+1);  
             }
         }
     }
@@ -60,26 +64,27 @@ export default function ChatFriend(props){
         
         // update the view :TODO Not working 
         handleSettingChats('s');  // updates the state "chats"  
+        setCount(chatCount+1);  
     }
 
     const handleSettingChats = (type) => {
         let curr = chats; // copy of previous state
         if(type==='s'){ // s stands for a msg sent by the current signed in user 
-            curr.push(<SenderMsg />); 
+            curr.push('s'); 
         }
         else{ // only option possible for this would be 'r', representing a received msg from an outside user 
-            curr.push(<ReceivedMsg />); 
+            curr.push('r'); 
         }
         setChats(curr); 
         console.log(chats); 
     }; 
 
     const [chats, setChats] = useState([<SenderMsg />, <ReceivedMsg />]);  
+    const [chatCount, setCount] = useState(0); 
     connect_to_chat(); 
     useEffect(() => {
-        console.log("lithika"); 
-        console.log(chats.length); 
-    }, [chats.length]); 
+        
+    }, [countEffect]);  
 
     return (
         <div className="container">
@@ -94,11 +99,6 @@ export default function ChatFriend(props){
                     <img src="static/chatium-logo.png"/>
                 </div>
                 <div className="chatHistory" id="chat-history">
-
-                    { chats.map((value) => {
-                        return value
-                    })}
-
                 </div>
                 <div className="msg-footer">
                     <MsgBox id="user-message" />
