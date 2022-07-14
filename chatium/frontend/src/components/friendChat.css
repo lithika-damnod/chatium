@@ -1,0 +1,37 @@
+.friend-chat-row{
+    display: flex; 
+    align-items: center;
+    cursor: pointer; 
+    padding: 10px; 
+    border-radius: 10px; 
+    margin-top: 5px; 
+}
+.friend-chat-row:hover{
+    background-color: #4646641b;
+}
+.friend-pic{
+    width: 90px; 
+    height: 90px; 
+    background-color: #8269aaa9; 
+    border-radius: 50%;
+    border: 2px solid green; 
+}
+.content{
+    margin: 10px; 
+}
+.friend-name{
+    display: block; 
+    width: 300px; 
+    height: 25px; 
+    background-color: #4646646d;
+    border-radius: 10px; 
+    margin-bottom: 10px; 
+}
+.last-chat{
+    display: block; 
+    width: 420px; 
+    height: 20px; 
+    background-color: #4646646d;
+    border-radius: 10px; 
+    margin-bottom: 10px; 
+}

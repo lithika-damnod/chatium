@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,23 +32,43 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'api', 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework', 
+    'channels',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
+    'django.middleware.common.CommonMiddleware', # TOCHECK : deleting this might remove COR errors
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware', 
 ]
+
+# CORS CONFIGURATION
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
+
+CORS_ALLOW_HEADERS = ['Access-Control-Allow-Origin']
+
 
 ROOT_URLCONF = 'chatium.urls'
 
@@ -68,7 +89,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'chatium.wsgi.application'
-
+ASGI_APPLICATION = 'chatium.asgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
@@ -117,7 +138,18 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# configure image filesystem
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# setting up channel layers 
+CHANNEL_LAYERS = {
+    'default' : {
+        'BACKEND' : 'channels.layers.InMemoryChannelLayer'
+    }
+}

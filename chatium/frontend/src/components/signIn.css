@@ -1,0 +1,27 @@
+.container{
+    display: flex; 
+    height: 100vh; 
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; 
+    line-height: 60%;
+}
+.content-frame{
+    background-color: #1E234A; 
+    padding: 50px; 
+    border-radius: 5px; 
+}
+.submit-area{
+    display: flex; 
+    margin-top: 20px; 
+    justify-content: center;
+    align-items: center; 
+}
+.logo{
+    display: flex; 
+    justify-content: center;
+    cursor: pointer; 
+}
+.logo img{
+    width: 280px; 
+}

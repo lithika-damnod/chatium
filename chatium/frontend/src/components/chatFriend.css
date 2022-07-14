@@ -1,0 +1,36 @@
+.container{
+    display: flex; 
+    align-items: center;
+    height: 100vh; 
+    justify-content: center;
+    flex-direction: column; 
+    line-height: 60%;
+}
+.chat-frame{
+    background-color: #1E234A; 
+    padding: 50px; 
+    border-radius: 5px; 
+    width: 60vw;
+}
+.logo{
+    display: flex; 
+    justify-content: center;
+    cursor: pointer; 
+    margin-bottom: 20px; 
+}
+.logo img{
+    width: 280px; 
+}
+.chatHistory{
+    display: flex; 
+    flex-direction: column-reverse;
+    height: 50vh; 
+    overflow-y: scroll; 
+}
+.msg-footer{
+    display: flex; 
+    margin-top: 25px; 
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; 
+}
