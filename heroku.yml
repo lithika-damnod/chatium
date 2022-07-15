@@ -1,0 +1,5 @@
+build:
+  docker:
+    api: chatium/Dockerfile
+    frontend: chatium/frontend/Dockerfile
+    
