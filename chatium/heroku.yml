@@ -1,4 +1,7 @@
 build:
   docker:
-    api: Dockerfile
     web: frontend/Dockerfile
+    api: Dockerfile
+
+  release: 
+    image: web  
