@@ -3,5 +3,5 @@ build:
     web: frontend/Dockerfile
     api: Dockerfile
 
-  release: 
-    image: web  
+  run: 
+    web: npm start

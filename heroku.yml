@@ -1,5 +1,7 @@
 build:
   docker:
-    api: chatium/Dockerfile
-    frontend: chatium/frontend/Dockerfile
-    
+    web: frontend/Dockerfile
+    api: Dockerfile
+
+  run: 
+    web: npm start
