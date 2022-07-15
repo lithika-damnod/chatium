@@ -3,4 +3,3 @@ djangorestframework
 django-cors-headers
 channels
 Pillow
-psycopg2
