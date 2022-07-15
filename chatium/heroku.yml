@@ -1,5 +1,4 @@
 build:
   docker:
     api: Dockerfile
-    frontend: frontend/Dockerfile
-    
+    web: frontend/Dockerfile
