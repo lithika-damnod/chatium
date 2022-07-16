@@ -10,18 +10,19 @@ services:
       - ./:/app
     depends_on:
       - db
-#    environment:
-#      - DB_HOST=db
-#      - DB_NAME=apidb
-#      - DB_USER=devuser
-#      - DB_PASS=changeme 
 
   frontend: 
     build: ./frontend/
     ports: 
       - 3000:3000
+    volumes: 
+      - ./:/app/src
     depends_on: 
       - api
 
   db:
     image: postgres
+    environment: 
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
