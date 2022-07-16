@@ -1,10 +1,8 @@
-import React, {Component} from 'react'; 
+import React from 'react'; 
+import Button from '@mui/material/Button'; 
+import TextField from '@mui/material/TextField';
 
 // components
-import TextInputField from './textInputField'; 
-import PasswordInputField from './passwordInputField'; 
-import LoginButton from './loginButton';
-
 // css
 import './signIn.css'; 
 
@@ -16,11 +14,42 @@ export default function SignIn(props){
                     <img src="static/chatium-logo.png"/>
                 </div>
                 <div className="signIn-form">
-                    <TextInputField label="Email" size="520px" classText="email-field" /> 
-                    <PasswordInputField label="Password" size="520px" classText="password-field" /> 
+                    <TextField
+                        id="email-input"
+                        label="Email"
+                        variant="filled"
+                        inputProps={
+                            {
+                                style: { color: 'white', backgroundColor: '#282e58', borderRadius: '10px' }
+                            }
+                        }
+                        InputLabelProps={
+                            {
+                                style: { color: 'white'}
+                            }
+                        }
+                        
+                    />
+                    <TextField
+                        id="password-input"
+                        label="Password"
+                        variant="filled"
+                        type="password"
+                        margin="normal"
+                        inputProps={
+                            {
+                                style: { color: 'white', backgroundColor: '#282e58', borderRadius: '10px'}
+                            }
+                        }
+                        InputLabelProps={
+                            {
+                                style: { color: 'white'}
+                            }
+                        }
+                    />
                     <div className="submit-area">
-                        <p style={{color:"#8D93C6", fontFamily: "Fira Code", cursor: "pointer"}} className="option-1">Create Account</p> 
-                        <LoginButton />
+                        <Button id="create-btn">Create Account</Button>
+                        <Button variant="contained" sx={{backgroundColor: '#795ae098',}} id="signin-btn">Sign In</Button>
                     </div> 
                 </div>
             </div>

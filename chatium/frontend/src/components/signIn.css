@@ -1,15 +1,19 @@
 .container{
     display: flex; 
-    height: 100vh; 
+    height: auto; 
     align-items: center;
     justify-content: center;
     flex-direction: column; 
     line-height: 60%;
 }
 .content-frame{
+    display: flex; 
+    flex-direction: column;
+    width: 500px; 
     background-color: #1E234A; 
     padding: 50px; 
     border-radius: 5px; 
+    border: 1px solid #353c6d; 
 }
 .submit-area{
     display: flex; 
@@ -23,5 +27,30 @@
     cursor: pointer; 
 }
 .logo img{
-    width: 280px; 
+    width: 220px !important; 
+}
+.signIn-form{
+    display: flex; 
+    flex-direction: column;
+}
+
+@media only screen and (max-width: 650px) {
+    .content-frame{
+        width: 100%; 
+        height: 100%; 
+        justify-content: center;
+    }
+    .signIn-form{
+        padding: 50px; 
+    }
+    .logo img{
+        margin-bottom: -25px; 
+    }
+    #signin-btn{
+        font-size: 1em; 
+    }
+    #create-btn{
+        font-size: 0.9em; 
+    }
+
 }
