@@ -1,11 +1,9 @@
-FROM node:latest
+FROM node:current-alpine
 
-RUN mkdir -p /app/src
-
-WORKDIR /app/src/
-COPY package.json . 
-
+WORKDIR /app
+COPY package*.json ./
 RUN npm install 
-COPY . .
+
+COPY . . 
 EXPOSE 3000 
 CMD ["npm", "start"]
