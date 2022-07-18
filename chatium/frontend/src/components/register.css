@@ -1,11 +1,46 @@
 .col-1{
     display: flex; 
-    justify-content: space-between;
+    width: 100%; 
+    background-color: red; 
 }
 
+.input-pack{
+    width: 100%; 
+}
+
+.form-grid{
+    display: grid; 
+    grid-template-columns: 1fr 1fr;
+    width: 100%; 
+    row-gap: 7px; 
+    column-gap: 7px; 
+    justify-content: center;
+}
 /* media query for changing input width */ 
 @media only screen and (max-width: 800px){
     .col-1{
         flex-direction: column; 
     } 
+}
+
+@media only screen and (max-width: 650px) {
+    .grid-form-item:nth-child(1){
+        grid-column: 1/-1;  
+    }  
+    .grid-form-item:nth-child(2){
+        grid-column: 1/-1;  
+    }  
+    .grid-form-item:nth-child(4){
+        grid-column: 1/-1;  
+    }  
+    .grid-form-item:nth-child(5){
+        grid-column: 1/-1;
+    }
+
+    .form-grid{
+        padding: 50px; 
+        margin: 10px; 
+        justify-content: center;
+        align-items: center;
+    }
 }

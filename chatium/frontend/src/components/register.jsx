@@ -1,79 +1,211 @@
 import React, {useState} from 'react'; 
 import axios from 'axios'; 
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import { ThemeProvider } from '@mui/material';
+import { createTheme } from '@mui/material/styles';
+import { indigo } from '@mui/material/colors';
 
 // components
-import TextInputField from './textInputField'; 
-import PasswordInputField from './passwordInputField'; 
-import LoginButton from './loginButton';
-
 // css
 import "./signIn.css"; 
 import "./register.css"; 
 
+const customTheme = createTheme({
+    palette: {
+        primary: {
+            main: indigo[300]
+        }
+    },
+    breakpoints: {
+        values: {
+            xs: 0,
+            sm: 650,
+            md: 900,
+            lg: 1200,
+            xl: 1536,
+        }
+    }, 
+}); 
+
+
 export default function Register(){
+    // form states 
+    const [firstName, setFirstName] = useState(""); 
+    const [lastName, setLastName] = useState(""); 
+    const [email, setEmail] = useState(""); 
+    const [password, setPassword] = useState(""); 
+    const [confirm, setConfirm] = useState(""); 
+    
+    // validation states 
+    const [emailValid, setEmailValidity] = useState(false); 
+    const [confirmValid, setConfirmValidity] = useState(false); 
+    const [confirmHelperText, setConfirmHelperText] = useState(""); 
+    const [emailHelperText, setEmailHelperText] = useState(""); 
 
-    // useState update functions
-    const handleFirstNameChange = (e) => { 
+    // input handling functiions 
+    const handleFirstNameInput = (e) => {
         setFirstName(e.target.value); 
-    }; 
-
-    const handleLastNameChange = (e) => { 
+    }
+    const handleLastNameInput = (e) => {
         setLastName(e.target.value); 
-    }; 
-
-    const handlePasswordChange = (e) => { 
-        setPassword(e.target.value); 
-    }; 
-
-    const handleEmailChange = (e) => { 
+    }
+    const handleEmailInput = (e) => {
         setEmail(e.target.value); 
-    }; 
+        setEmailValidity(false); 
+        setEmailHelperText(""); 
+    }
+    const handlePasswordInput = (e) => {
+        setPassword(e.target.value); 
+    }
+    const handleConfirmInput = (e) => {
+        setConfirm(e.target.value); 
+        setConfirmValidity(false); 
+        setConfirmHelperText(""); 
+    }
 
-    // send data for API endpoint
-    const sendData = async () => {
-        let api_url = "http://127.0.0.1:8000/api/user/"; 
+    const sendPostData = async () => {
+        // check whether the password confirmation matches 
+        if(password !== confirm){
+            setConfirmValidity(true); 
+            setConfirmHelperText("password does not match"); 
+        }
+        else {
+            let api_url = "http://127.0.0.1:8000/api/user/"; 
+            let res = await axios.post(api_url, {
+                "firstName": firstName, 
+                "lastName" : lastName, 
+                "email" : email, 
+                "password" : password
+            }, 
+            {
+                headers : {
+                    'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
+                }
+            }); 
 
-        let res = await axios.post(api_url, {
-            "firstName" : firstName, 
-            "lastName" : lastName, 
-            "email" : email, 
-            "password" : password
-        }, 
-        {
-            headers : {
-                'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
+            // manipulate response
+            let data = res.data; 
+            if(data["status"] === "error"){
+                // only possible error for this route is "email" 
+                setEmailValidity(true); 
+                setEmailHelperText("email is already taken"); 
             }
-        }); 
-        console.log(res.data); 
-    };  
+            window.location.href="/signin"; 
+        }
+    }
 
-   const [firstName, setFirstName] = useState(""); 
-   const [lastName, setLastName] = useState(""); 
-   const [password, setPassword] = useState(""); 
-   const [email, setEmail] = useState(""); 
-
-    return (
-        <div className="container">
-            <div className="content-frame">
-                <div className="logo">
-                    <img src="static/chatium-logo.png"/>
-                </div>
-                <div className="signIn-form">
-                    <form name="">
-                        <div class="col-1">
-                            <TextInputField label="First Name" size="300px" classText="first-name" name="firstname" value={firstName} onChange={handleFirstNameChange}/> 
-                            <TextInputField label="Last Name" size="300px" classText="last-name" name="last-name" onChange={handleLastNameChange} value={lastName}/>
+    return ( 
+        <ThemeProvider theme={customTheme} >
+            <div className="container">
+                <div className="content-frame"> 
+                    <div className="logo">
+                        <img src="static/chatium-logo.png"/>
+                    </div>
+                    <div className="form-grid">
+                        <div className="grid-form-item">
+                            <TextField  label="First Name" sx={{width: "100%"}} color="primary" 
+                                variant="filled"
+                                inputProps={
+                                    {
+                                        style: { color: 'white', backgroundColor: "#282e58"}
+                                    }
+                                } 
+                                InputLabelProps={
+                                    {
+                                        style: { color: 'white', borderColor: "white"}
+                                    }
+                                }
+                                onChange={handleFirstNameInput}
+                                value={firstName}
+                                autoComplete="off"
+                            />
                         </div>
-                        <TextInputField label="Email" size="480px" classText="email-inp" name="email" onChange={handleEmailChange} value={email} />
-                        <PasswordInputField label="Password" size="380px" classText="password-field" name="password" onChange={handlePasswordChange} value = {password}/> 
-                        <PasswordInputField label="Password" size="380px" classText="password-con-field" name="password-con" /> 
-                        <div className="submit-area">
-                            <p style={{color:"#8D93C6", fontFamily: "Fira Code", cursor: "pointer"}} className="option-1">Sign In</p> 
-                            <LoginButton onClick={sendData}/>
+                        <div className="grid-form-item">
+                            <TextField  label="Last Name" sx={{width: "100%"}} color="primary" 
+                                variant="filled"
+                                inputProps={
+                                    {
+                                        style: { color: 'white', backgroundColor: "#282e58"}
+                                    }
+                                } 
+                                InputLabelProps={
+                                    {
+                                        style: { color: 'white', borderColor: "white"}
+                                    }
+                                }
+                                onChange={handleLastNameInput}
+                                value={lastName}
+                                autoComplete="off"
+                            />
+                        </div>
+                        <div className="grid-form-item" style={{gridColumn: "1/-1"}}>
+                            <TextField  label="Email" sx={{width: "100%"}} color="primary" 
+                                variant="filled"
+                                inputProps={
+                                    {
+                                        style: { color: 'white', backgroundColor: "#282e58"}
+                                    }
+                                } 
+                                InputLabelProps={
+                                    {
+                                        style: { color: 'white', borderColor: "white"}
+                                    }
+                                }
+                                onChange={handleEmailInput}
+                                value={email}
+                                autoComplete="off"
+                                error={emailValid}
+                                helperText={emailHelperText}
+                            />
+                        </div>
+                        <div className="grid-form-item">
+                            <TextField  label="Password" sx={{width: "100%"}} color="primary" 
+                                variant="filled"
+                                inputProps={
+                                    {
+                                        style: { color: 'white', backgroundColor: "#282e58"}
+                                    }
+                                } 
+                                InputLabelProps={
+                                    {
+                                        style: { color: 'white', borderColor: "white"}
+                                    }
+                                }
+                                onChange={handlePasswordInput}
+                                value={password}
+                                type="password"
+                            />
+                        </div>
+                        <div className="grid-form-item">
+                            <TextField  label="Confirm" sx={{width: "100%"}} color="primary" 
+                                variant="filled"
+                                inputProps={
+                                    {
+                                        style: { color: 'white', backgroundColor: "#282e58"}
+                                    }
+                                } 
+                                InputLabelProps={
+                                    {
+                                        style: { color: 'white', borderColor: "white"}
+                                    }
+                                }
+                                onChange={handleConfirmInput}
+                                value={confirm}
+                                type="password"
+                                error={confirmValid}
+                                helperText={confirmHelperText}
+                            />
+                        </div>
+                        <div className="submit-area" style={{ gridColumn: '1/-1'}} >
+                            <Button id="create-btn" href="/signin" >Sign In Instead</Button>
+                            <Button variant="contained" sx={{backgroundColor: '#795ae098',}} id="signin-btn" onClick={sendPostData} >Sign Up</Button>
                         </div> 
-                    </form>
+                    </div>
                 </div>
             </div>
-        </div>
+        </ThemeProvider>
     ); 
 } 
+

@@ -1,4 +1,5 @@
 from json import JSONDecodeError
+from tkinter import W
 from django.http import JsonResponse, HttpResponse
 from rest_framework.decorators import api_view
 import json
@@ -49,21 +50,32 @@ def user_actions(request):
                 "password" : value, 
         """ 
         json_data = json.loads(request.body)
-        firstName = json_data["firstName"]
-        lastName = json_data["lastName"]
+        firstName = str(json_data["firstName"]).capitalize()
+        lastName = str(json_data["lastName"]).capitalize()
         email = json_data["email"]
         password = json_data["password"]
         encrypted_password = hashText(password)
-        print(f"first: {firstName} last: {lastName} email: {email} password: {password}")
+
+        # check whether the email is already taken 
+        indb=True
+        try: 
+            temp_usr_obj = User.objects.get(email=email) 
+        except User.DoesNotExist: 
+            indb=False
+        
+        if indb: 
+            return JsonResponse({
+                "status" : "error", 
+                "type" : "email"
+            })
+
         n_user = User(email=email, firstName=firstName, lastName=lastName, password=encrypted_password)
 
+        """ NOT WORKING :TODO  
         # select a random profile picture and assign it to profilePic field 
-        """
         randomPic = selectRandomFile("frontend/public/static/default-profile-pictures")
         pic_path = "frontend/public/static/default-profile-pictures/" + randomPic
-        prof = Image.open(pic_path)
-        print(prof)
-        n_user.profilePic = prof 
+        img = Image.open(pic_path)
         """
         n_user.save()
         # get the id of newly created user 
@@ -81,7 +93,29 @@ def user_actions(request):
             "status": "route isn't configured yet"
         })
     
+@api_view(['POST'])
+def auth(request):
+    json_data = json.loads(request.body)
+    email = json_data["email"]
+    passwd = json_data["password"]
+    # query db and get the user object with the corresponding email 
+    try:
+        user_obj = User.objects.get(email=email) 
+    except User.DoesNotExist: 
+        return  JsonResponse({
+            "status" : "error", 
+            "type" : "not found"
+        }) 
+    hashed_passwd_inp = hashText(passwd)
+    if user_obj.password != hashed_passwd_inp:
+        return JsonResponse({
+            "status" : "error", 
+            "type" : "password"
+        })
+    # initiate sessions
+    request.session["id"] = user_obj.id 
 
-@api_view(['GET', 'POST'])
-def handleChatMessages(): 
-    pass
+    return JsonResponse({
+        "status" : "success", 
+        "id": user_obj.id
+    })

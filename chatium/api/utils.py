@@ -11,3 +11,4 @@ def selectRandomFile(path):
 def hashText(text): 
     encrypted_txt = hashlib.sha256(text.encode()).hexdigest()
     return encrypted_txt
+
