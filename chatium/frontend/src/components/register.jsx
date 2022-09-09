@@ -143,12 +143,12 @@ export default function Register() {
                 InputLabelProps={{
                   style: { color: "white", borderColor: "white" },
                 }}
-                onChange={handleLastNameInput}
-                value={lastName}
+                onChange={handleFirstNameInput}
+                value={firstName}
                 autoComplete="off"
               />
             </div>
-            <div className="grid-form-item" style={{ gridColumn: "1/-1" }}>
+            <div className="grid-form-item">
               <TextField
                 label="Email"
                 sx={{ width: "100%" }}
@@ -160,11 +160,9 @@ export default function Register() {
                 InputLabelProps={{
                   style: { color: "white", borderColor: "white" },
                 }}
-                onChange={handleEmailInput}
-                value={email}
+                onChange={handleFirstNameInput}
+                value={firstName}
                 autoComplete="off"
-                error={emailValid}
-                helperText={emailHelperText}
               />
             </div>
             <div className="grid-form-item">
@@ -179,14 +177,14 @@ export default function Register() {
                 InputLabelProps={{
                   style: { color: "white", borderColor: "white" },
                 }}
-                onChange={handlePasswordInput}
-                value={password}
-                type="password"
+                onChange={handleFirstNameInput}
+                value={firstName}
+                autoComplete="off"
               />
             </div>
             <div className="grid-form-item">
               <TextField
-                label="Confirm"
+                label="Confirm Password"
                 sx={{ width: "100%" }}
                 color="primary"
                 variant="filled"
@@ -196,11 +194,9 @@ export default function Register() {
                 InputLabelProps={{
                   style: { color: "white", borderColor: "white" },
                 }}
-                onChange={handleConfirmInput}
-                value={confirm}
-                type="password"
-                error={confirmValid}
-                helperText={confirmHelperText}
+                onChange={handleFirstNameInput}
+                value={firstName}
+                autoComplete="off"
               />
             </div>
             <div className="submit-area" style={{ gridColumn: "1/-1" }}>

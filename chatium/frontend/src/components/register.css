@@ -18,12 +18,16 @@
 
 .form-grid{
     display: grid; 
-    grid-template-columns: 1fr 1fr;
-    width: 100%; 
-    row-gap: 7px; 
-    column-gap: 7px; 
-    justify-content: center;
+    grid-template-columns: 1fr 1fr;     
 }
+
+.grid-form-item{
+    margin: 2px; 
+}
+.grid-form-item:nth-child(3) {
+    grid-column: 1/-1;
+}
+
 /* media query for changing input width */ 
 @media only screen and (max-width: 800px){
     .col-1{
@@ -32,6 +36,10 @@
 }
 
 @media only screen and (max-width: 650px) {
+    .form-grid {
+        margin: 1.5em; 
+        margin-top: 2em; 
+    }
     .grid-form-item:nth-child(1){
         grid-column: 1/-1;  
     }  
