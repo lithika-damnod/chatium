@@ -13,7 +13,7 @@ export default function SenderMsg(){
                     <div className="sender-name" style={theme}></div>
                     <div className="sender-msg" style={theme}></div>
                 </div>
-                <div className="col-1">
+                <div className="chat-col-1">
                     <div className="sender-pic" style={theme}></div>
                 </div>
             </div>

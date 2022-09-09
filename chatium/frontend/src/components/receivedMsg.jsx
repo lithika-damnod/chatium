@@ -6,7 +6,7 @@ export default function ReceivedMsg(){
     return (
         <div className="msg-row">
             <div className="msg-box">
-                <div className="col-1">
+                <div className="chat-col-1">
                     <div className="sender-pic"></div>
                 </div>
                 <div className="col-2">

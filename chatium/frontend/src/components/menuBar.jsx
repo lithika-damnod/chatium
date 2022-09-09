@@ -1,6 +1,4 @@
 import React from "react";
-import { deepPurple } from "@mui/material/colors";
-import Avatar from "@mui/material/Avatar";
 import TimelapseRoundedIcon from "@mui/icons-material/TimelapseRounded";
 import AddReactionRoundedIcon from "@mui/icons-material/AddReactionRounded";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";

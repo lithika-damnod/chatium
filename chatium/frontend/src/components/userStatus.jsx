@@ -8,7 +8,7 @@ import "./userStatus.css";
 export default function UserStatus(props){
     return (
         <div className="status-container">
-            <div className="col-1">
+            <div className="status-col-1">
                 <div className="pic-container"></div>
             </div>
             <div className="content">

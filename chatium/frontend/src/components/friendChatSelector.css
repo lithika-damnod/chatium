@@ -9,13 +9,6 @@
 .friend-chat-row:hover{
     background-color: #4646641b;
 }
-.friend-pic{
-    width: 90px; 
-    height: 90px; 
-    background-color: #8269aaa9; 
-    border-radius: 50%;
-    border: 2px solid green; 
-}
 .content{
     margin: 10px; 
 }
@@ -34,4 +27,12 @@
     background-color: #4646646d;
     border-radius: 10px; 
     margin-bottom: 10px; 
+}
+
+/* keyframe for displas with width less than 630px */
+@media only screen and (max-width: 630px) {
+    .friend-pic{
+        width: 70px; 
+        height: 70px; 
+    }
 }

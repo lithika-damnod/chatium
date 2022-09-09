@@ -1,0 +1,21 @@
+.search-wrapper{
+    display: flex; 
+    width: 100%; 
+    background-color: #39395598; 
+    height: 27px; 
+    padding: 5px; 
+    border-radius: 10px; 
+    color: #d8daea62; 
+    justify-content: left;
+    align-items: center;
+}
+.search-wrapper input{
+    outline: none; 
+    border: none; 
+    background-color: inherit; 
+    color: white; 
+    width: 700px; 
+}
+.search-wrapper > * {
+    margin-right: 5px;
+}
