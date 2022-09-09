@@ -143,8 +143,8 @@ export default function Register() {
                 InputLabelProps={{
                   style: { color: "white", borderColor: "white" },
                 }}
-                onChange={handleFirstNameInput}
-                value={firstName}
+                onChange={handleLastNameInput}
+                value={lastName}
                 autoComplete="off"
               />
             </div>
@@ -160,8 +160,8 @@ export default function Register() {
                 InputLabelProps={{
                   style: { color: "white", borderColor: "white" },
                 }}
-                onChange={handleFirstNameInput}
-                value={firstName}
+                onChange={handleEmailInput}
+                value={email}
                 autoComplete="off"
               />
             </div>
@@ -177,8 +177,8 @@ export default function Register() {
                 InputLabelProps={{
                   style: { color: "white", borderColor: "white" },
                 }}
-                onChange={handleFirstNameInput}
-                value={firstName}
+                onChange={handlePasswordInput}
+                value={password}
                 autoComplete="off"
               />
             </div>
@@ -194,8 +194,8 @@ export default function Register() {
                 InputLabelProps={{
                   style: { color: "white", borderColor: "white" },
                 }}
-                onChange={handleFirstNameInput}
-                value={firstName}
+                onChange={handleConfirmInput}
+                value={confirm}
                 autoComplete="off"
               />
             </div>
