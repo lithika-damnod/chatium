@@ -114,8 +114,9 @@ def auth_session(request):
             "session_email" : value
     """
     json_data = json.loads(request.body)
-    session_email = str(json_data["session_email"])
-    # check whether the email is a valid email
+    session_email = json_data["session_email"]
+
+    # check validity of the session email
     try:
         user_obj = User.objects.get(email=session_email)
     except User.DoesNotExist:

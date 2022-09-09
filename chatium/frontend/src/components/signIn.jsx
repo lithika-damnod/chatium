@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import Cookies from "js-cookie";
 
 // components
 // css
@@ -64,8 +65,10 @@ export default function SignIn(props) {
           setPasswordHelperText("Password incorrect");
         }
       } else {
+        // set cookie
+        Cookies.set("email", signEmail, { secure: true });
         // redirect to index page if auth has passed
-        window.location.href = "/";
+        window.location.href = "/index";
       }
     }
   };

@@ -5,7 +5,6 @@ import Button from "@mui/material/Button";
 import { ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { indigo } from "@mui/material/colors";
-import { CookiesProvider } from "react-cookie";
 
 // components
 // css
@@ -94,7 +93,6 @@ export default function Register() {
         setEmailValidity(true);
         setEmailHelperText("email is already taken");
       }
-      // initiate sessions : TODO
       // redirect to signin
       window.location.href = "/signin";
     }

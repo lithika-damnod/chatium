@@ -13,12 +13,7 @@ import IndexPage from './components/indexPage';
 // CSS 
 import './index.css';  // main css 
 
-// cookies 
-import { useCookies } from 'react-cookie';
-
-
 export default function App() {
-    const [cookies, setCookie]  = useCookies(['name']); 
     return (
         <BrowserRouter>
             <Routes>

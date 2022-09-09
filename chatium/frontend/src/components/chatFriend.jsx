@@ -2,6 +2,7 @@ import React from "react";
 import ChatBubbleOutlineRoundedIcon from "@mui/icons-material/ChatBubbleOutlineRounded";
 import WhatshotRoundedIcon from "@mui/icons-material/WhatshotRounded";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
+import auth_user from "../auth";
 
 // components
 import MenuBar from "./menuBar";
@@ -11,6 +12,7 @@ import "./chatFriend.css";
 import "./indexPage.css";
 
 export default function ChatFriend(props) {
+  auth_user();
   return (
     <React.Fragment>
       <div className="chat-wrapper">
